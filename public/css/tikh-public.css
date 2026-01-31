@@ -1,0 +1,797 @@
+/**
+ * Türkiye İK Hesaplama Araçları - Public Styles
+ *
+ * @package TurkiyeIKHesaplama
+ * @since   1.0.0
+ *
+ * All classes use unique prefix: tikh2026-
+ */
+
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
+
+.tikh2026-wrap {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+	max-width: 100%;
+	margin: 0 auto;
+	padding: 20px;
+	background: #f8f9fa;
+	border-radius: 12px;
+	box-sizing: border-box;
+}
+
+.tikh2026-wrap *,
+.tikh2026-wrap *::before,
+.tikh2026-wrap *::after {
+	box-sizing: border-box;
+}
+
+/* Header */
+.tikh2026-head {
+	text-align: center;
+	margin-bottom: 30px;
+	padding-bottom: 20px;
+	border-bottom: 2px solid #e9ecef;
+}
+
+.tikh2026-head h2 {
+	color: #2c3e50;
+	font-size: 1.8em;
+	margin: 0 0 10px;
+}
+
+.tikh2026-head .tikh2026-sub {
+	color: #6c757d;
+	font-size: 0.95em;
+}
+
+.tikh2026-head .tikh2026-badge {
+	display: inline-block;
+	background: linear-gradient(135deg, #667eea, #764ba2);
+	color: #fff;
+	padding: 5px 15px;
+	border-radius: 20px;
+	font-weight: 600;
+	margin-top: 10px;
+}
+
+/* Forms */
+.tikh2026-form {
+	background: #fff;
+	padding: 25px;
+	border-radius: 10px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+	margin-bottom: 30px;
+}
+
+.tikh2026-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 20px;
+	margin-bottom: 20px;
+}
+
+.tikh2026-group {
+	display: flex;
+	flex-direction: column;
+}
+
+.tikh2026-group label {
+	font-weight: 600;
+	color: #495057;
+	margin-bottom: 8px;
+	font-size: 0.95em;
+}
+
+.tikh2026-wrap .tikh2026-group input[type="text"],
+.tikh2026-wrap .tikh2026-group input[type="date"],
+.tikh2026-wrap .tikh2026-group input[type="number"],
+.tikh2026-wrap .tikh2026-group select {
+	padding: 12px 15px !important;
+	border: 2px solid #e9ecef !important;
+	border-radius: 8px !important;
+	font-size: 1em !important;
+	transition: border-color 0.3s, box-shadow 0.3s;
+	background-color: #fff !important;
+	color: #2c3e50 !important;
+	width: 100%;
+	height: auto !important;
+	line-height: 1.5 !important;
+}
+
+.tikh2026-wrap .tikh2026-group select {
+	appearance: none !important;
+	-webkit-appearance: none !important;
+	-moz-appearance: none !important;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23495057' d='M6 8L1 3h10z'/%3E%3C/svg%3E") !important;
+	background-repeat: no-repeat !important;
+	background-position: right 12px center !important;
+	padding-right: 35px !important;
+	cursor: pointer;
+}
+
+.tikh2026-wrap .tikh2026-group select option {
+	background-color: #fff !important;
+	color: #2c3e50 !important;
+	padding: 10px;
+}
+
+.tikh2026-wrap .tikh2026-group select::-ms-expand {
+	display: none;
+}
+
+.tikh2026-wrap .tikh2026-group input:focus,
+.tikh2026-wrap .tikh2026-group select:focus {
+	outline: none !important;
+	border-color: #667eea !important;
+	box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15) !important;
+}
+
+/* Checkbox */
+.tikh2026-check {
+	display: flex;
+	align-items: center;
+	padding: 15px;
+	background: #f8f9fa;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+.tikh2026-check input {
+	width: 20px;
+	height: 20px;
+	margin-right: 12px;
+}
+
+.tikh2026-checkdesc {
+	font-size: 0.85em;
+	color: #6c757d;
+	margin-top: 5px;
+	margin-left: 32px;
+}
+
+/* Buttons */
+.tikh2026-btn {
+	background: linear-gradient(135deg, #667eea, #764ba2);
+	color: #fff;
+	border: none;
+	padding: 15px 40px;
+	font-size: 1.1em;
+	font-weight: 600;
+	border-radius: 8px;
+	cursor: pointer;
+	width: 100%;
+	transition: all 0.3s;
+}
+
+.tikh2026-btn:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* Error Messages */
+.tikh2026-err {
+	background: #fff5f5;
+	border: 1px solid #fc8181;
+	color: #c53030;
+	padding: 15px 20px;
+	border-radius: 8px;
+	margin-bottom: 20px;
+}
+
+/* Info Box */
+.tikh2026-info {
+	background: #e8f4fd;
+	border-left: 4px solid #4299e1;
+	padding: 15px 20px;
+	border-radius: 0 8px 8px 0;
+	margin-bottom: 20px;
+}
+
+.tikh2026-info h4 {
+	color: #2b6cb0;
+	margin: 0 0 10px;
+}
+
+.tikh2026-info ul {
+	margin: 0;
+	padding-left: 20px;
+	color: #4a5568;
+}
+
+/* ==========================================================================
+   Summary Cards
+   ========================================================================== */
+
+.tikh2026-cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 15px;
+	margin-bottom: 30px;
+}
+
+.tikh2026-card {
+	background: #fff;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+	text-align: center;
+}
+
+.tikh2026-card.tikh2026-card-green {
+	border-top: 4px solid #48bb78;
+}
+
+.tikh2026-card.tikh2026-card-blue {
+	border-top: 4px solid #4299e1;
+}
+
+.tikh2026-card.tikh2026-card-orange {
+	border-top: 4px solid #ed8936;
+}
+
+.tikh2026-card.tikh2026-card-purple {
+	border-top: 4px solid #9f7aea;
+}
+
+.tikh2026-card .tikh2026-ctitle {
+	font-size: 0.85em;
+	color: #6c757d;
+	text-transform: uppercase;
+	margin-bottom: 5px;
+}
+
+.tikh2026-card .tikh2026-cval {
+	font-size: 1.5em;
+	font-weight: 700;
+	color: #2c3e50;
+}
+
+.tikh2026-card .tikh2026-cunit {
+	font-size: 0.7em;
+	color: #6c757d;
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+
+.tikh2026-tblwrap {
+	background: #fff;
+	border-radius: 10px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+	overflow: hidden;
+	margin-bottom: 30px;
+}
+
+.tikh2026-tblhead {
+	background: linear-gradient(135deg, #667eea, #764ba2);
+	color: #fff;
+	padding: 15px 20px;
+	font-weight: 600;
+	font-size: 1.1em;
+}
+
+.tikh2026-tblscroll {
+	overflow-x: auto;
+}
+
+.tikh2026-tbl {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.9em;
+	min-width: 900px;
+}
+
+.tikh2026-tbl th {
+	background: #f8f9fa;
+	padding: 12px 10px;
+	text-align: right;
+	font-weight: 600;
+	color: #495057;
+	border-bottom: 2px solid #e9ecef;
+	white-space: nowrap;
+}
+
+.tikh2026-tbl th:first-child {
+	text-align: left;
+	position: sticky;
+	left: 0;
+	background: #f8f9fa;
+	z-index: 1;
+}
+
+.tikh2026-tbl td {
+	padding: 12px 10px;
+	text-align: right;
+	border-bottom: 1px solid #e9ecef;
+	color: #495057;
+}
+
+.tikh2026-tbl td:first-child {
+	text-align: left;
+	font-weight: 600;
+	color: #2c3e50;
+	position: sticky;
+	left: 0;
+	background: #fff;
+	z-index: 1;
+}
+
+.tikh2026-tbl tr:hover td {
+	background: #f8f9fa;
+}
+
+.tikh2026-tbl tr:hover td:first-child {
+	background: #f8f9fa;
+}
+
+.tikh2026-tbl tr.tikh2026-tot td {
+	background: #edf2f7;
+	font-weight: 700;
+	color: #2c3e50;
+	border-top: 2px solid #667eea;
+}
+
+.tikh2026-tbl tr.tikh2026-tot td:first-child {
+	background: #edf2f7;
+}
+
+/* ==========================================================================
+   Parameter Cards
+   ========================================================================== */
+
+.tikh2026-params {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 20px;
+	margin-top: 30px;
+}
+
+.tikh2026-pcard {
+	background: #fff;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.tikh2026-pcard h4 {
+	color: #2c3e50;
+	margin: 0 0 15px;
+	padding-bottom: 10px;
+	border-bottom: 2px solid #e9ecef;
+}
+
+.tikh2026-pitem {
+	display: flex;
+	justify-content: space-between;
+	padding: 8px 0;
+	border-bottom: 1px dashed #e9ecef;
+}
+
+.tikh2026-pitem:last-child {
+	border-bottom: none;
+}
+
+.tikh2026-pitem .tikh2026-plbl {
+	color: #6c757d;
+}
+
+.tikh2026-pitem .tikh2026-pval {
+	font-weight: 600;
+	color: #2c3e50;
+}
+
+/* ==========================================================================
+   Zam Calculator Specific
+   ========================================================================== */
+
+.tikh2026-zam-wrap {
+	max-width: 600px;
+}
+
+.tikh2026-mods {
+	display: flex;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+.tikh2026-modbtn {
+	flex: 1;
+	padding: 12px;
+	border: 2px solid #e9ecef;
+	border-radius: 8px;
+	background: #fff;
+	cursor: pointer;
+	font-weight: 600;
+	text-align: center;
+	transition: all 0.3s;
+}
+
+.tikh2026-modbtn.active {
+	background: #667eea;
+	color: #fff;
+	border-color: #667eea;
+}
+
+.tikh2026-modbtn:hover:not(.active) {
+	border-color: #667eea;
+}
+
+.tikh2026-group.hidden {
+	display: none;
+}
+
+.tikh2026-result {
+	margin-top: 20px;
+	background: #fff;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.tikh2026-reshead {
+	background: linear-gradient(135deg, #48bb78, #38a169);
+	color: #fff;
+	padding: 15px 20px;
+	font-weight: 600;
+}
+
+.tikh2026-resbody {
+	padding: 20px;
+}
+
+.tikh2026-resitem {
+	display: flex;
+	justify-content: space-between;
+	padding: 12px 0;
+	border-bottom: 1px dashed #e9ecef;
+}
+
+.tikh2026-resitem:last-child {
+	border-bottom: none;
+}
+
+.tikh2026-resitem .tikh2026-lbl {
+	color: #6c757d;
+}
+
+.tikh2026-resitem .tikh2026-val {
+	font-weight: 700;
+	color: #2c3e50;
+}
+
+.tikh2026-resitem.tikh2026-big {
+	background: #f0fff4;
+	margin: 0 -20px;
+	padding: 15px 20px;
+	border-bottom: none;
+}
+
+.tikh2026-resitem.tikh2026-big .tikh2026-val {
+	color: #22543d;
+	font-size: 1.3em;
+}
+
+/* ==========================================================================
+   Gelir Vergisi Specific
+   ========================================================================== */
+
+.tikh2026-gv-wrap {
+	max-width: 800px;
+}
+
+.tikh2026-gv-btn {
+	background: linear-gradient(135deg, #ed8936, #dd6b20);
+}
+
+.tikh2026-gv-btn:hover {
+	box-shadow: 0 5px 20px rgba(237, 137, 54, 0.4);
+}
+
+.tikh2026-gv-reshead {
+	background: linear-gradient(135deg, #ed8936, #dd6b20);
+}
+
+.tikh2026-card.tikh2026-main {
+	background: #fff7ed;
+	border: 2px solid #ed8936;
+}
+
+.tikh2026-card.tikh2026-main .tikh2026-cval {
+	color: #c05621;
+}
+
+.tikh2026-tbl tr.tikh2026-active {
+	background: #fff7ed;
+}
+
+.tikh2026-tbl tr.tikh2026-inactive {
+	color: #a0aec0;
+}
+
+.tikh2026-note {
+	background: #e8f4fd;
+	border-left: 4px solid #4299e1;
+	padding: 12px;
+	margin: 20px;
+	border-radius: 0 8px 8px 0;
+	font-size: 0.9em;
+	color: #2b6cb0;
+}
+
+/* ==========================================================================
+   İzin Calculator Specific
+   ========================================================================== */
+
+.tikh2026-izin-wrap {
+	max-width: 900px;
+}
+
+.tikh2026-izin-head {
+	text-align: center;
+	margin-bottom: 25px;
+	padding-bottom: 15px;
+	border-bottom: 2px solid #e9ecef;
+}
+
+.tikh2026-izin-head h2 {
+	color: #2c3e50;
+	font-size: 1.6em;
+	margin: 0 0 5px;
+}
+
+.tikh2026-izin-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+	gap: 25px;
+	margin-bottom: 30px;
+}
+
+.tikh2026-izin-card {
+	background: #fff;
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
+
+.tikh2026-izin-cardhead {
+	padding: 20px;
+	color: #fff;
+}
+
+.tikh2026-izin-cardhead.tikh2026-det {
+	background: linear-gradient(135deg, #4299e1, #3182ce);
+}
+
+.tikh2026-izin-cardhead.tikh2026-hiz {
+	background: linear-gradient(135deg, #ed8936, #dd6b20);
+}
+
+.tikh2026-izin-cardhead h3 {
+	margin: 0 0 5px;
+	font-size: 1.2em;
+}
+
+.tikh2026-izin-cdesc {
+	opacity: 0.9;
+	font-size: 0.9em;
+}
+
+.tikh2026-izin-cardbody {
+	padding: 25px;
+}
+
+/* Radio Buttons */
+.tikh2026-radios {
+	display: flex;
+	gap: 10px;
+	margin-bottom: 15px;
+}
+
+.tikh2026-radio {
+	flex: 1;
+	padding: 12px;
+	border: 2px solid #e9ecef;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+.tikh2026-radio:hover {
+	border-color: #667eea;
+}
+
+.tikh2026-radio input {
+	margin-right: 10px;
+}
+
+.tikh2026-radio.tikh2026-kamu input:checked + .tikh2026-rlbl {
+	color: #4299e1;
+}
+
+.tikh2026-radio.tikh2026-ozel input:checked + .tikh2026-rlbl {
+	color: #ed8936;
+}
+
+/* Result Big Number */
+.tikh2026-izin-big {
+	text-align: center;
+	padding: 20px;
+	margin-bottom: 20px;
+	border-radius: 10px;
+}
+
+.tikh2026-izin-big.tikh2026-pos {
+	background: linear-gradient(135deg, #48bb78, #38a169);
+	color: #fff;
+}
+
+.tikh2026-izin-big.tikh2026-zero {
+	background: #fed7d7;
+	color: #c53030;
+}
+
+.tikh2026-izin-big .tikh2026-num {
+	font-size: 3em;
+	font-weight: 700;
+	line-height: 1;
+}
+
+.tikh2026-izin-big .tikh2026-unit {
+	font-size: 1.1em;
+	margin-top: 5px;
+	opacity: 0.9;
+}
+
+/* Detail Items */
+.tikh2026-izin-detail {
+	background: #f8f9fa;
+	border-radius: 8px;
+	padding: 15px;
+	margin-bottom: 15px;
+}
+
+.tikh2026-izin-ditem {
+	display: flex;
+	justify-content: space-between;
+	padding: 8px 0;
+	border-bottom: 1px dashed #e9ecef;
+}
+
+.tikh2026-izin-ditem:last-child {
+	border-bottom: none;
+}
+
+.tikh2026-izin-dlbl {
+	color: #6c757d;
+}
+
+.tikh2026-izin-dval {
+	font-weight: 600;
+	color: #2c3e50;
+}
+
+.tikh2026-izin-next {
+	background: #e8f4fd;
+	padding: 12px;
+	border-radius: 8px;
+	margin-bottom: 15px;
+	color: #2b6cb0;
+	font-size: 0.9em;
+}
+
+.tikh2026-izin-kanun {
+	background: #f8f9fa;
+	padding: 12px;
+	border-radius: 8px;
+	font-size: 0.85em;
+	color: #6c757d;
+}
+
+/* Table */
+.tikh2026-izin-tablo {
+	background: #fff;
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
+
+.tikh2026-izin-tablohead {
+	background: linear-gradient(135deg, #667eea, #764ba2);
+	color: #fff;
+	padding: 15px 20px;
+}
+
+.tikh2026-izin-tablohead h3 {
+	margin: 0;
+	font-size: 1.1em;
+}
+
+.tikh2026-izin-tablogrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 0;
+}
+
+.tikh2026-izin-tablocol {
+	padding: 20px;
+}
+
+.tikh2026-izin-tablocol.tikh2026-kamu {
+	border-right: 1px solid #e9ecef;
+}
+
+.tikh2026-izin-tablocol h4 {
+	margin: 0 0 15px;
+	color: #2c3e50;
+	font-size: 1em;
+}
+
+.tikh2026-izin-tablorow {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 0;
+	border-bottom: 1px solid #e9ecef;
+}
+
+.tikh2026-izin-tablorow:last-child {
+	border-bottom: none;
+}
+
+.tikh2026-izin-tsure {
+	color: #6c757d;
+}
+
+.tikh2026-izin-tgun {
+	font-weight: 700;
+	color: #2c3e50;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 768px) {
+	.tikh2026-wrap {
+		padding: 15px;
+	}
+
+	.tikh2026-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.tikh2026-cards {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.tikh2026-izin-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.tikh2026-izin-tablogrid {
+		grid-template-columns: 1fr;
+	}
+
+	.tikh2026-izin-tablocol.tikh2026-kamu {
+		border-right: none;
+		border-bottom: 1px solid #e9ecef;
+	}
+}
+
+@media (max-width: 480px) {
+	.tikh2026-cards {
+		grid-template-columns: 1fr;
+	}
+
+	.tikh2026-mods {
+		flex-direction: column;
+	}
+
+	.tikh2026-radios {
+		flex-direction: column;
+	}
+}

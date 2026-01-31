@@ -1,0 +1,698 @@
+# Copyright (C) 2026 Emre Ervan
+# This file is distributed under the same license as the Türkiye İK Hesaplama Araçları plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Türkiye İK Hesaplama Araçları 1.0.0\n"
+"Report-Msgid-Bugs-To: https://emreervan.dev\n"
+"Last-Translator: Emre Ervan <info@emreervan.dev>\n"
+"Language-Team: Turkish <info@emreervan.dev>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-01-31T00:00:00+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI\n"
+"X-Domain: turkiye-ik-hesaplama\n"
+
+#: turkiye-ik-hesaplama.php:89
+msgid "Türkiye İK Hesaplama Araçları requires PHP %1$s or higher. You are running PHP %2$s."
+msgstr ""
+
+#: turkiye-ik-hesaplama.php:96
+msgid "Türkiye İK Hesaplama Araçları requires WordPress %1$s or higher. You are running WordPress %2$s."
+msgstr ""
+
+#: turkiye-ik-hesaplama.php:179
+msgid "Türkiye İK Hesaplama Araçları requires PHP 7.4+ and WordPress 5.8+."
+msgstr ""
+
+#: admin/class-tikh-admin.php:30
+msgid "İK Hesaplama Araçları"
+msgstr ""
+
+#: admin/class-tikh-admin.php:31
+msgid "İK Araçları"
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:17
+msgid "Türkiye İK Hesaplama Araçları"
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:18
+msgid "Bordro, zam, gelir vergisi ve yıllık izin hesaplama araçları"
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:26
+msgid "Kullanılabilir Shortcode'lar"
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:31
+msgid "Maaş / Bordro Hesaplama"
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:33
+msgid "Brütten nete ve netten brüte maaş hesaplama. 12 aylık detaylı bordro çıktısı."
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:37
+msgid "Zam Hesaplama"
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:39
+msgid "Yüzdelik zam oranından yeni maaş veya yeni maaştan zam oranı hesaplama."
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:43
+msgid "Gelir Vergisi Hesaplama"
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:45
+msgid "Artan oranlı gelir vergisi hesaplama. 2025 ve 2026 vergi dilimleri."
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:49
+msgid "Yıllık İzin Hesaplama"
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:51
+msgid "Kamu (657 DMK) ve özel sektör (4857 İş K.) yıllık izin hakları."
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:60
+msgid "2026 Yılı Parametreleri"
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:65
+msgid "Asgari Ücret"
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:67
+msgid "Brüt (Ocak-Haziran)"
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:71
+msgid "Brüt (Temmuz-Aralık)"
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:75
+msgid "SGK Tavan"
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:81
+msgid "SGK Oranları"
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:83
+msgid "SGK İşçi"
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:87
+msgid "İşsizlik İşçi"
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:91
+msgid "SGK İşveren (Brüt→Net)"
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:95
+msgid "SGK İşveren (Net→Brüt)"
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:99
+msgid "İşsizlik İşveren"
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:105
+msgid "Gelir Vergisi Dilimleri (Ücretli)"
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:134
+msgid "Kullanım"
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:138
+msgid "Shortcode Nasıl Eklenir?"
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:140
+msgid "Herhangi bir sayfa veya yazıya ilgili shortcode'u ekleyin."
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:141
+msgid "Gutenberg editöründe \"Shortcode\" bloğu kullanabilirsiniz."
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:142
+msgid "Klasik editörde doğrudan shortcode'u yazabilirsiniz."
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:143
+msgid "Widget alanlarında da shortcode kullanabilirsiniz."
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:148
+msgid "Önemli Notlar"
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:150
+msgid "Hesaplamalar 2026 yılı mevzuatına göre yapılmaktadır."
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:151
+msgid "Asgari ücret istisnası ve damga vergisi istisnası otomatik uygulanmaktadır."
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:152
+msgid "Emekli çalışanlar için SGDP hesaplaması yapılmaktadır."
+msgstr ""
+
+#: admin/partials/tikh-admin-display.php:153
+msgid "Hazine desteği (%5, %2 veya yok) seçilebilmektedir."
+msgstr ""
+
+#: modules/class-tikh-bordro.php:524
+msgid "Lütfen geçerli bir maaş tutarı giriniz."
+msgstr ""
+
+#: modules/class-tikh-bordro.php:526
+msgid "Brüt maaş asgari ücretin altında olamaz."
+msgstr ""
+
+#: modules/class-tikh-bordro.php:532
+msgid "Brütten Nete"
+msgstr ""
+
+#: modules/class-tikh-bordro.php:535
+msgid "Netten Brüte"
+msgstr ""
+
+#: modules/class-tikh-zam.php:104
+msgid "Mevcut net maaş sıfırdan büyük olmalıdır."
+msgstr ""
+
+#: modules/class-tikh-zam.php:110
+msgid "Zam oranı sıfırdan büyük olmalıdır."
+msgstr ""
+
+#: modules/class-tikh-zam.php:118
+msgid "Zamlı net, mevcut netten büyük olmalıdır."
+msgstr ""
+
+#: modules/class-tikh-gelir-vergisi.php:321
+msgid "Vergi matrahı sıfırdan büyük olmalıdır."
+msgstr ""
+
+#: modules/class-tikh-izin.php:38
+msgid "1 yıldan az"
+msgstr ""
+
+#: modules/class-tikh-izin.php:44
+msgid "1 - 10 yıl"
+msgstr ""
+
+#: modules/class-tikh-izin.php:50
+msgid "10+ yıl"
+msgstr ""
+
+#: modules/class-tikh-izin.php:68
+msgid "1 - 5 yıl"
+msgstr ""
+
+#: modules/class-tikh-izin.php:80
+msgid "6 - 15 yıl"
+msgstr ""
+
+#: modules/class-tikh-izin.php:86
+msgid "15+ yıl"
+msgstr ""
+
+#: modules/class-tikh-izin.php:133
+msgid "657 sayılı Devlet Memurları Kanunu"
+msgstr ""
+
+#: modules/class-tikh-izin.php:134
+msgid "4857 sayılı İş Kanunu"
+msgstr ""
+
+#: modules/class-tikh-izin.php:206
+msgid "İşe başlama tarihi giriniz."
+msgstr ""
+
+#: modules/class-tikh-izin.php:210
+msgid "Geçerli bir tarih giriniz."
+msgstr ""
+
+#: modules/class-tikh-izin.php:225
+msgid "Çalışma süresi seçiniz."
+msgstr ""
+
+#: templates/bordro-form.php:25
+msgid "Maaş Hesaplama"
+msgstr ""
+
+#: templates/bordro-form.php:26
+msgid "Türkiye Bordro Mevzuatına Uyumlu"
+msgstr ""
+
+#: templates/bordro-form.php:39
+msgid "Hesaplama Türü"
+msgstr ""
+
+#: templates/bordro-form.php:47
+msgid "Aylık Brüt Maaş (TL)"
+msgstr ""
+
+#: templates/bordro-form.php:52
+msgid "Hazine Desteği"
+msgstr ""
+
+#: templates/bordro-form.php:54
+msgid "%5 İndirim"
+msgstr ""
+
+#: templates/bordro-form.php:55
+msgid "%2 İndirim"
+msgstr ""
+
+#: templates/bordro-form.php:56
+msgid "Yok"
+msgstr ""
+
+#: templates/bordro-form.php:63
+msgid "Emekli Çalışan"
+msgstr ""
+
+#: templates/bordro-form.php:65
+msgid "SGDP %24.75, işsizlik yok"
+msgstr ""
+
+#: templates/bordro-form.php:69
+msgid "Hesapla"
+msgstr ""
+
+#: templates/bordro-form.php:76
+msgid "Yıllık Brüt"
+msgstr ""
+
+#: templates/bordro-form.php:80
+msgid "Yıllık Net"
+msgstr ""
+
+#: templates/bordro-form.php:84
+msgid "Toplam Kesinti"
+msgstr ""
+
+#: templates/bordro-form.php:88
+msgid "İşveren Maliyeti"
+msgstr ""
+
+#: templates/bordro-form.php:95
+msgid "Detaylar"
+msgstr ""
+
+#: templates/bordro-form.php:97
+msgid "Tür:"
+msgstr ""
+
+#: templates/bordro-form.php:98
+msgid "Girilen:"
+msgstr ""
+
+#: templates/bordro-form.php:99
+msgid "Çalışan:"
+msgstr ""
+
+#: templates/bordro-form.php:99
+msgid "Emekli"
+msgstr ""
+
+#: templates/bordro-form.php:99
+msgid "Normal"
+msgstr ""
+
+#: templates/bordro-form.php:105
+msgid "Çalışan Bordrosu"
+msgstr ""
+
+#: templates/bordro-form.php:110 templates/bordro-form.php:155
+msgid "Ay"
+msgstr ""
+
+#: templates/bordro-form.php:111 templates/bordro-form.php:156
+msgid "Brüt"
+msgstr ""
+
+#: templates/bordro-form.php:112 templates/bordro-form.php:157
+msgid "SGK İşçi"
+msgstr ""
+
+#: templates/bordro-form.php:113
+msgid "İşsizlik"
+msgstr ""
+
+#: templates/bordro-form.php:114
+msgid "GV"
+msgstr ""
+
+#: templates/bordro-form.php:115
+msgid "Damga"
+msgstr ""
+
+#: templates/bordro-form.php:116
+msgid "Küm.Matrah"
+msgstr ""
+
+#: templates/bordro-form.php:117
+msgid "Net"
+msgstr ""
+
+#: templates/bordro-form.php:134
+msgid "TOPLAM"
+msgstr ""
+
+#: templates/bordro-form.php:150
+msgid "İşveren Maliyeti"
+msgstr ""
+
+#: templates/bordro-form.php:158
+msgid "SGK İşveren"
+msgstr ""
+
+#: templates/bordro-form.php:159
+msgid "İşsizlik İşveren"
+msgstr ""
+
+#: templates/bordro-form.php:160
+msgid "Toplam Maliyet"
+msgstr ""
+
+#: templates/bordro-form.php:188
+msgid "Asgari Ücret 2026"
+msgstr ""
+
+#: templates/bordro-form.php:191
+msgid "Brüt"
+msgstr ""
+
+#: templates/bordro-form.php:195
+msgid "GV Matrahı"
+msgstr ""
+
+#: templates/bordro-form.php:201
+msgid "GV Dilimleri"
+msgstr ""
+
+#: templates/zam-form.php:24
+msgid "Zam Hesaplama"
+msgstr ""
+
+#: templates/zam-form.php:25
+msgid "Maaş Artış Oranı ve Tutarı"
+msgstr ""
+
+#: templates/zam-form.php:38
+msgid "% → Net"
+msgstr ""
+
+#: templates/zam-form.php:41
+msgid "Net → %"
+msgstr ""
+
+#: templates/zam-form.php:46
+msgid "Mevcut Net Maaş (TL)"
+msgstr ""
+
+#: templates/zam-form.php:51
+msgid "Zam Oranı (%)"
+msgstr ""
+
+#: templates/zam-form.php:56
+msgid "Zamlı Net Maaş (TL)"
+msgstr ""
+
+#: templates/zam-form.php:65
+msgid "Hesaplama Sonucu"
+msgstr ""
+
+#: templates/zam-form.php:68
+msgid "Mevcut Net"
+msgstr ""
+
+#: templates/zam-form.php:72
+msgid "Zam Oranı"
+msgstr ""
+
+#: templates/zam-form.php:76
+msgid "Zam Tutarı"
+msgstr ""
+
+#: templates/zam-form.php:80
+msgid "Artış Katı"
+msgstr ""
+
+#: templates/zam-form.php:84
+msgid "Zamlı Net Maaş"
+msgstr ""
+
+#: templates/gelir-vergisi-form.php:24
+msgid "Gelir Vergisi Hesaplama"
+msgstr ""
+
+#: templates/gelir-vergisi-form.php:25
+msgid "Artan Oranlı Vergi Hesaplaması"
+msgstr ""
+
+#: templates/gelir-vergisi-form.php:37
+msgid "Yıl"
+msgstr ""
+
+#: templates/gelir-vergisi-form.php:45
+msgid "Mükellef Türü"
+msgstr ""
+
+#: templates/gelir-vergisi-form.php:47
+msgid "Ücretli (Maaşlı)"
+msgstr ""
+
+#: templates/gelir-vergisi-form.php:48
+msgid "Ücret Dışı"
+msgstr ""
+
+#: templates/gelir-vergisi-form.php:53
+msgid "Yıllık Vergi Matrahı (TL)"
+msgstr ""
+
+#: templates/gelir-vergisi-form.php:60
+msgid "Asgari Ücret İstisnası"
+msgstr ""
+
+#: templates/gelir-vergisi-form.php:74
+#, php-format
+msgid "%d Yılı Gelir Vergisi Hesaplaması"
+msgstr ""
+
+#: templates/gelir-vergisi-form.php:83
+msgid "Matrah"
+msgstr ""
+
+#: templates/gelir-vergisi-form.php:87
+msgid "Brüt Vergi"
+msgstr ""
+
+#: templates/gelir-vergisi-form.php:92
+msgid "İstisna"
+msgstr ""
+
+#: templates/gelir-vergisi-form.php:97
+msgid "Ödenecek Vergi"
+msgstr ""
+
+#: templates/gelir-vergisi-form.php:101
+msgid "Efektif Oran"
+msgstr ""
+
+#: templates/gelir-vergisi-form.php:111
+msgid "Dilim"
+msgstr ""
+
+#: templates/gelir-vergisi-form.php:112
+msgid "Oran"
+msgstr ""
+
+#: templates/gelir-vergisi-form.php:113
+msgid "Matrah"
+msgstr ""
+
+#: templates/gelir-vergisi-form.php:114
+msgid "Vergi"
+msgstr ""
+
+#: templates/gelir-vergisi-form.php:154
+#, php-format
+msgid "Matrahınız %%%s diliminde."
+msgstr ""
+
+#: templates/izin-form.php:26
+msgid "Yıllık İzin Hesaplama"
+msgstr ""
+
+#: templates/izin-form.php:27
+msgid "Kamu ve Özel Sektör İzin Hakları"
+msgstr ""
+
+#: templates/izin-form.php:34
+msgid "Detaylı Hesaplama"
+msgstr ""
+
+#: templates/izin-form.php:35
+msgid "İşe başlama tarihine göre"
+msgstr ""
+
+#: templates/izin-form.php:46
+msgid "Çalışan Türü"
+msgstr ""
+
+#: templates/izin-form.php:50
+msgid "Kamu"
+msgstr ""
+
+#: templates/izin-form.php:54
+msgid "Özel Sektör"
+msgstr ""
+
+#: templates/izin-form.php:60
+msgid "İşe Başlama Tarihi"
+msgstr ""
+
+#: templates/izin-form.php:70
+msgid "Sonuç"
+msgstr ""
+
+#: templates/izin-form.php:76
+msgid "gün yıllık izin"
+msgstr ""
+
+#: templates/izin-form.php:81
+msgid "İşe Başlama"
+msgstr ""
+
+#: templates/izin-form.php:85
+msgid "Bugün"
+msgstr ""
+
+#: templates/izin-form.php:89
+msgid "Çalışma Süresi"
+msgstr ""
+
+#: templates/izin-form.php:94
+#, php-format
+msgid "%1$d yıl, %2$d ay, %3$d gün"
+msgstr ""
+
+#: templates/izin-form.php:103
+msgid "İzin Dilimi"
+msgstr ""
+
+#: templates/izin-form.php:113
+#, php-format
+msgid "%d yıl sonra bir üst dilime geçeceksiniz."
+msgstr ""
+
+#: templates/izin-form.php:130
+msgid "Hızlı Hesaplama"
+msgstr ""
+
+#: templates/izin-form.php:131
+msgid "Toplam çalışma yılına göre"
+msgstr ""
+
+#: templates/izin-form.php:156
+msgid "Toplam Çalışma Süresi (Yıl)"
+msgstr ""
+
+#: templates/izin-form.php:158
+msgid "Seçiniz..."
+msgstr ""
+
+#: templates/izin-form.php:164
+#, php-format
+msgid "%d yıl"
+msgstr ""
+
+#: templates/izin-form.php:195
+#, php-format
+msgid "%d yıl"
+msgstr ""
+
+#: templates/izin-form.php:230
+msgid "Yıllık İzin Süreleri Tablosu"
+msgstr ""
+
+#: templates/izin-form.php:234
+msgid "Kamu (657 DMK)"
+msgstr ""
+
+#: templates/izin-form.php:242
+#, php-format
+msgid "%d gün"
+msgstr ""
+
+#: templates/izin-form.php:251
+msgid "Özel Sektör (4857 İş K.)"
+msgstr ""
+
+#: includes/helpers.php:136
+msgid "Ocak"
+msgstr ""
+
+#: includes/helpers.php:137
+msgid "Şubat"
+msgstr ""
+
+#: includes/helpers.php:138
+msgid "Mart"
+msgstr ""
+
+#: includes/helpers.php:139
+msgid "Nisan"
+msgstr ""
+
+#: includes/helpers.php:140
+msgid "Mayıs"
+msgstr ""
+
+#: includes/helpers.php:141
+msgid "Haziran"
+msgstr ""
+
+#: includes/helpers.php:142
+msgid "Temmuz"
+msgstr ""
+
+#: includes/helpers.php:143
+msgid "Ağustos"
+msgstr ""
+
+#: includes/helpers.php:144
+msgid "Eylül"
+msgstr ""
+
+#: includes/helpers.php:145
+msgid "Ekim"
+msgstr ""
+
+#: includes/helpers.php:146
+msgid "Kasım"
+msgstr ""
+
+#: includes/helpers.php:147
+msgid "Aralık"
+msgstr ""
+
+#: public/class-tikh-public.php:64
+msgid "Aylık Brüt Maaş (TL)"
+msgstr ""
+
+#: public/class-tikh-public.php:65
+msgid "Hedef Net Maaş (TL)"
+msgstr ""
