@@ -51,7 +51,7 @@ Türkiye İK Hesaplama Araçları, insan kaynakları departmanları ve çalışa
 * Asgari Ücret Brüt: 33.030 TL (Ocak-Haziran), 37.455 TL (Temmuz-Aralık)
 * SGK Tavan: 330.300 TL
 * SGK İşçi: %14, İşsizlik İşçi: %1
-* SGK İşveren: %20,5 (Brüt→Net), %21,75 (Net→Brüt), İşsizlik İşveren: %2
+* SGK İşveren: %21,75, İşsizlik İşveren: %2
 * Gelir Vergisi Dilimleri: %15, %20, %27, %35, %40
 
 = Kullanım =

@@ -51,14 +51,9 @@ class TIKH_Bordro_Params {
 	const ISSIZLIK_ISCI_ORANI = 0.01;
 
 	/**
-	 * Employer SGK rate (brütten nete için %20,5).
+	 * Employer SGK rate (%21,75).
 	 */
-	const SGK_ISVEREN_ORANI = 0.205;
-
-	/**
-	 * Employer SGK rate for net to gross calculation (%21,75).
-	 */
-	const SGK_ISVEREN_ORANI_NETTEN_BRUTE = 0.2175;
+	const SGK_ISVEREN_ORANI = 0.2175;
 
 	/**
 	 * Employer unemployment insurance rate.
@@ -313,14 +308,8 @@ class TIKH_Bordro_Engine {
 			$sgk_isveren      = round( $sgk_matrahi * TIKH_Bordro_Params::SGDP_ISVEREN_ORANI, 2 );
 			$issizlik_isveren = 0;
 		} else {
-			// Use different SGK employer rate based on calculation type.
-			if ( 'net_brut' === $this->hesap_turu ) {
-				// Netten brüte: %21,75
-				$sgk_isveren_orani = TIKH_Bordro_Params::SGK_ISVEREN_ORANI_NETTEN_BRUTE - $this->hazine_destegi;
-			} else {
-				// Brütten nete: %20,5
-				$sgk_isveren_orani = TIKH_Bordro_Params::SGK_ISVEREN_ORANI - $this->hazine_destegi;
-			}
+			// SGK işveren oranı: %21,75
+			$sgk_isveren_orani = TIKH_Bordro_Params::SGK_ISVEREN_ORANI - $this->hazine_destegi;
 			$sgk_isveren       = round( $sgk_matrahi * $sgk_isveren_orani, 2 );
 			$issizlik_isveren  = round( $sgk_matrahi * TIKH_Bordro_Params::ISSIZLIK_ISVEREN_ORANI, 2 );
 		}

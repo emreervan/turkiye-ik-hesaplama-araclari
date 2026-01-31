@@ -232,7 +232,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</div>
 			<div class="tikh2026-pitem">
 				<span class="tikh2026-plbl"><?php esc_html_e( 'SGK İşveren', 'turkiye-ik-hesaplama' ); ?></span>
-				<span class="tikh2026-pval">%20,5 / %21,75</span>
+				<span class="tikh2026-pval">%21,75</span>
 			</div>
 			<div class="tikh2026-pitem">
 				<span class="tikh2026-plbl"><?php esc_html_e( 'İşsizlik İşveren', 'turkiye-ik-hesaplama' ); ?></span>

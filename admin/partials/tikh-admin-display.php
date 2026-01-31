@@ -88,11 +88,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<span class="tikh-param-value">%1</span>
 					</div>
 					<div class="tikh-param-row">
-						<span class="tikh-param-label"><?php esc_html_e( 'SGK İşveren (Brüt→Net)', 'turkiye-ik-hesaplama' ); ?></span>
-						<span class="tikh-param-value">%20,5</span>
-					</div>
-					<div class="tikh-param-row">
-						<span class="tikh-param-label"><?php esc_html_e( 'SGK İşveren (Net→Brüt)', 'turkiye-ik-hesaplama' ); ?></span>
+						<span class="tikh-param-label"><?php esc_html_e( 'SGK İşveren', 'turkiye-ik-hesaplama' ); ?></span>
 						<span class="tikh-param-value">%21,75</span>
 					</div>
 					<div class="tikh-param-row">
