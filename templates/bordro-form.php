@@ -108,17 +108,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<thead>
 							<tr>
 								<th><?php esc_html_e( 'Ay', 'turkiye-ik-hesaplama' ); ?></th>
-								<th><?php esc_html_e( 'Brüt', 'turkiye-ik-hesaplama' ); ?></th>
-								<th><?php esc_html_e( 'SGK İşçi', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Brüt Ücret', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'SSK İşçi', 'turkiye-ik-hesaplama' ); ?></th>
 								<th><?php esc_html_e( 'İşsizlik İşçi', 'turkiye-ik-hesaplama' ); ?></th>
 								<th><?php esc_html_e( 'Gelir Vergisi', 'turkiye-ik-hesaplama' ); ?></th>
 								<th><?php esc_html_e( 'Damga Vergisi', 'turkiye-ik-hesaplama' ); ?></th>
-								<th><?php esc_html_e( 'Küm. Matrah', 'turkiye-ik-hesaplama' ); ?></th>
-								<th><?php esc_html_e( 'Net', 'turkiye-ik-hesaplama' ); ?></th>
-								<th><?php esc_html_e( 'GV İstisnası', 'turkiye-ik-hesaplama' ); ?></th>
-								<th><?php esc_html_e( 'DV İstisnası', 'turkiye-ik-hesaplama' ); ?></th>
-								<th><?php esc_html_e( 'Toplam Net', 'turkiye-ik-hesaplama' ); ?></th>
-								<th><?php esc_html_e( 'SGK İşveren', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Kümülatif Matrah', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Net Ücret', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'AGİ', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Asg. Ücret GV İst.', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Asg. Ücret DV İst.', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Toplam Net Ele Geçen', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'SSK İşveren', 'turkiye-ik-hesaplama' ); ?></th>
 								<th><?php esc_html_e( 'İşsizlik İşveren', 'turkiye-ik-hesaplama' ); ?></th>
 								<th><?php esc_html_e( 'Toplam Maliyet', 'turkiye-ik-hesaplama' ); ?></th>
 							</tr>
@@ -134,6 +135,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 									<td><?php echo esc_html( tikh_format_currency( $ay['damga_vergisi'] ) ); ?></td>
 									<td><?php echo esc_html( tikh_format_currency( $ay['kumulatif_gv_matrahi'] ) ); ?></td>
 									<td><?php echo esc_html( tikh_format_currency( $ay['net'] ) ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['agi'] ) ); ?></td>
 									<td><?php echo esc_html( tikh_format_currency( $ay['gv_istisnasi'] ) ); ?></td>
 									<td><?php echo esc_html( tikh_format_currency( $ay['damga_istisnasi'] ) ); ?></td>
 									<td><strong><?php echo esc_html( tikh_format_currency( $ay['toplam_net_ele_gecen'] ) ); ?></strong></td>
@@ -151,6 +153,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['damga_vergisi'] ) ); ?></td>
 								<td>-</td>
 								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['net'] ) ); ?></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['agi'] ) ); ?></td>
 								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['gv_istisnasi'] ) ); ?></td>
 								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['damga_istisnasi'] ) ); ?></td>
 								<td><strong><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['toplam_net_ele_gecen'] ) ); ?></strong></td>
@@ -173,16 +176,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<tr>
 								<th><?php esc_html_e( 'Ay', 'turkiye-ik-hesaplama' ); ?></th>
 								<th><?php esc_html_e( 'Hedef Net', 'turkiye-ik-hesaplama' ); ?></th>
-								<th><?php esc_html_e( 'SGK İşçi', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'SSK İşçi', 'turkiye-ik-hesaplama' ); ?></th>
 								<th><?php esc_html_e( 'İşsizlik İşçi', 'turkiye-ik-hesaplama' ); ?></th>
 								<th><?php esc_html_e( 'Gelir Vergisi', 'turkiye-ik-hesaplama' ); ?></th>
 								<th><?php esc_html_e( 'Damga Vergisi', 'turkiye-ik-hesaplama' ); ?></th>
-								<th><?php esc_html_e( 'Küm. Matrah', 'turkiye-ik-hesaplama' ); ?></th>
-								<th><?php esc_html_e( 'Brüt', 'turkiye-ik-hesaplama' ); ?></th>
-								<th><?php esc_html_e( 'GV İstisnası', 'turkiye-ik-hesaplama' ); ?></th>
-								<th><?php esc_html_e( 'DV İstisnası', 'turkiye-ik-hesaplama' ); ?></th>
-								<th><?php esc_html_e( 'Toplam Net', 'turkiye-ik-hesaplama' ); ?></th>
-								<th><?php esc_html_e( 'SGK İşveren', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Kümülatif Matrah', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Brüt Ücret', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'AGİ', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Asg. Ücret GV İst.', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Asg. Ücret DV İst.', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Toplam Net Ele Geçen', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'SSK İşveren', 'turkiye-ik-hesaplama' ); ?></th>
 								<th><?php esc_html_e( 'İşsizlik İşveren', 'turkiye-ik-hesaplama' ); ?></th>
 								<th><?php esc_html_e( 'Toplam Maliyet', 'turkiye-ik-hesaplama' ); ?></th>
 							</tr>
@@ -198,6 +202,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 									<td><?php echo esc_html( tikh_format_currency( $ay['damga_vergisi'] ) ); ?></td>
 									<td><?php echo esc_html( tikh_format_currency( $ay['kumulatif_gv_matrahi'] ) ); ?></td>
 									<td><strong><?php echo esc_html( tikh_format_currency( $ay['brut'] ) ); ?></strong></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['agi'] ) ); ?></td>
 									<td><?php echo esc_html( tikh_format_currency( $ay['gv_istisnasi'] ) ); ?></td>
 									<td><?php echo esc_html( tikh_format_currency( $ay['damga_istisnasi'] ) ); ?></td>
 									<td><strong><?php echo esc_html( tikh_format_currency( $ay['toplam_net_ele_gecen'] ) ); ?></strong></td>
@@ -215,6 +220,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['damga_vergisi'] ) ); ?></td>
 								<td>-</td>
 								<td><strong><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['brut'] ) ); ?></strong></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['agi'] ) ); ?></td>
 								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['gv_istisnasi'] ) ); ?></td>
 								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['damga_istisnasi'] ) ); ?></td>
 								<td><strong><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['toplam_net_ele_gecen'] ) ); ?></strong></td>
