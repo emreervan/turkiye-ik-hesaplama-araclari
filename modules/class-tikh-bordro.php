@@ -324,36 +324,45 @@ class TIKH_Bordro_Engine {
 	/**
 	 * Calculate net to gross salary.
 	 *
+	 * Hedef: Toplam Net Ele Geçen (Net + GV İstisnası + DV İstisnası) = hedef_net
+	 *
 	 * @since 1.0.0
 	 *
-	 * @param float $hedef_net Target net salary.
-	 * @param int   $ay_no     Month number (1-12).
+	 * @param float $hedef_toplam_net Target total net salary (including exemptions).
+	 * @param int   $ay_no            Month number (1-12).
 	 *
 	 * @return array Calculation results.
 	 */
-	public function hesapla_netten_brute( $hedef_net, $ay_no ) {
+	public function hesapla_netten_brute( $hedef_toplam_net, $ay_no ) {
 		$baslangic_kumulatif = $this->kumulatif_gv_matrahi;
-		$brut_tahmin         = $hedef_net * 1.50;
+		$brut_tahmin         = $hedef_toplam_net * 1.50;
 
 		for ( $i = 0; $i < 200; $i++ ) {
 			$this->kumulatif_gv_matrahi = $baslangic_kumulatif;
 			$sonuc                      = $this->hesapla_brutten_nete( $brut_tahmin, $ay_no );
-			$fark                       = $hedef_net - $sonuc['net'];
+
+			// Hedef: toplam_net_ele_gecen = hedef_toplam_net
+			$fark = $hedef_toplam_net - $sonuc['toplam_net_ele_gecen'];
 
 			if ( abs( $fark ) < 0.01 ) {
 				$this->kumulatif_gv_matrahi = $baslangic_kumulatif;
-				return $this->hesapla_brutten_nete( $brut_tahmin, $ay_no );
+				$sonuc                      = $this->hesapla_brutten_nete( $brut_tahmin, $ay_no );
+				// Toplam net ele geçen değerini hedef değere sabitle.
+				$sonuc['toplam_net_ele_gecen'] = $hedef_toplam_net;
+				return $sonuc;
 			}
 
 			$brut_tahmin += $fark * 1.35;
 
 			if ( $brut_tahmin < 0 ) {
-				$brut_tahmin = $hedef_net * 1.2;
+				$brut_tahmin = $hedef_toplam_net * 1.2;
 			}
 		}
 
 		$this->kumulatif_gv_matrahi = $baslangic_kumulatif;
-		return $this->hesapla_brutten_nete( $brut_tahmin, $ay_no );
+		$sonuc                      = $this->hesapla_brutten_nete( $brut_tahmin, $ay_no );
+		$sonuc['toplam_net_ele_gecen'] = $hedef_toplam_net;
+		return $sonuc;
 	}
 
 	/**

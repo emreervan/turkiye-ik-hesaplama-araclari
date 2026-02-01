@@ -175,7 +175,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<thead>
 							<tr>
 								<th><?php esc_html_e( 'Ay', 'turkiye-ik-hesaplama' ); ?></th>
-								<th><?php esc_html_e( 'Hedef Net', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Net Ücret', 'turkiye-ik-hesaplama' ); ?></th>
 								<th><?php esc_html_e( 'SSK İşçi', 'turkiye-ik-hesaplama' ); ?></th>
 								<th><?php esc_html_e( 'İşsizlik İşçi', 'turkiye-ik-hesaplama' ); ?></th>
 								<th><?php esc_html_e( 'Gelir Vergisi', 'turkiye-ik-hesaplama' ); ?></th>
