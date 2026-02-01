@@ -195,7 +195,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<?php foreach ( $sonuclar['aylik'] as $ay ) : ?>
 								<tr>
 									<td><?php echo esc_html( $ay['ay'] ); ?></td>
-									<td><?php echo esc_html( tikh_format_currency( $ay['net'] ) ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['toplam_net_ele_gecen'] ) ); ?></td>
 									<td><?php echo esc_html( tikh_format_currency( $ay['sgk_isci'] ) ); ?></td>
 									<td><?php echo esc_html( tikh_format_currency( $ay['issizlik_isci'] ) ); ?></td>
 									<td><?php echo esc_html( tikh_format_currency( $ay['gelir_vergisi'] ) ); ?></td>
@@ -213,7 +213,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<?php endforeach; ?>
 							<tr class="tikh2026-tot">
 								<td><?php esc_html_e( 'TOPLAM', 'turkiye-ik-hesaplama' ); ?></td>
-								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['net'] ) ); ?></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['toplam_net_ele_gecen'] ) ); ?></td>
 								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['sgk_isci'] ) ); ?></td>
 								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['issizlik_isci'] ) ); ?></td>
 								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['gelir_vergisi'] ) ); ?></td>
