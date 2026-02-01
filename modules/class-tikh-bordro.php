@@ -275,25 +275,24 @@ class TIKH_Bordro_Engine {
 		$onceki_kumulatif = $this->kumulatif_gv_matrahi;
 		$yeni_kumulatif   = $onceki_kumulatif + $aylik_gv_matrahi;
 
-		$toplam_vergi     = $this->hesapla_kumulatif_vergi( $yeni_kumulatif );
-		$onceki_vergi     = $this->hesapla_kumulatif_vergi( $onceki_kumulatif );
-		$brut_gelir_vergisi = round( $toplam_vergi - $onceki_vergi, 2 );
+		$toplam_vergi       = $this->hesapla_kumulatif_vergi( $yeni_kumulatif );
+		$onceki_vergi       = $this->hesapla_kumulatif_vergi( $onceki_kumulatif );
+		$gelir_vergisi      = round( $toplam_vergi - $onceki_vergi, 2 );
 
-		$gv_istisnasi     = round( $this->hesapla_gv_istisnasi( $ay_no ), 2 );
-		$net_gelir_vergisi = max( 0, round( $brut_gelir_vergisi - $gv_istisnasi, 2 ) );
+		// Asgari ücret GV istisnası (bilgi amaçlı, kesintiden düşülmez).
+		$gv_istisnasi = round( $this->hesapla_gv_istisnasi( $ay_no ), 2 );
 
 		// Update cumulative.
 		$this->kumulatif_gv_matrahi = $yeni_kumulatif;
 
 		// Stamp tax calculations.
-		$brut_damga_vergisi = round( $brut * TIKH_Bordro_Params::DAMGA_VERGISI_ORANI, 2 );
-		$damga_istisnasi    = TIKH_Bordro_Params::DAMGA_ISTISNASI;
-		$net_damga_vergisi  = max( 0, round( $brut_damga_vergisi - $damga_istisnasi, 2 ) );
+		$damga_vergisi   = round( $brut * TIKH_Bordro_Params::DAMGA_VERGISI_ORANI, 2 );
+		$damga_istisnasi = TIKH_Bordro_Params::DAMGA_ISTISNASI;
 
-		// Net salary.
-		$net = round( $brut - $sgk_isci - $issizlik_isci - $net_gelir_vergisi - $net_damga_vergisi, 2 );
+		// Net salary = Brüt - SGK İşçi - İşsizlik İşçi - Gelir Vergisi - Damga Vergisi.
+		$net = round( $brut - $sgk_isci - $issizlik_isci - $gelir_vergisi - $damga_vergisi, 2 );
 
-		// Toplam Net Ele Geçen = Net + GV İstisnası + DV İstisnası
+		// Toplam Net Ele Geçen = Net + GV İstisnası + DV İstisnası.
 		$toplam_net_ele_gecen = round( $net + $gv_istisnasi + $damga_istisnasi, 2 );
 
 		// Employer costs.
@@ -310,12 +309,10 @@ class TIKH_Bordro_Engine {
 			'issizlik_isci'           => $issizlik_isci,
 			'gv_matrahi'              => round( $aylik_gv_matrahi, 2 ),
 			'kumulatif_gv_matrahi'    => round( $yeni_kumulatif, 2 ),
-			'brut_gelir_vergisi'      => $brut_gelir_vergisi,
+			'gelir_vergisi'           => $gelir_vergisi,
 			'gv_istisnasi'            => $gv_istisnasi,
-			'net_gelir_vergisi'       => $net_gelir_vergisi,
-			'brut_damga_vergisi'      => $brut_damga_vergisi,
+			'damga_vergisi'           => $damga_vergisi,
 			'damga_istisnasi'         => $damga_istisnasi,
-			'net_damga_vergisi'       => $net_damga_vergisi,
 			'net'                     => $net,
 			'toplam_net_ele_gecen'    => $toplam_net_ele_gecen,
 			'sgk_isveren'             => $sgk_isveren,
@@ -377,15 +374,15 @@ class TIKH_Bordro_Engine {
 			'brut'                    => 0,
 			'sgk_isci'                => 0,
 			'issizlik_isci'           => 0,
-			'net_gelir_vergisi'       => 0,
-			'net_damga_vergisi'       => 0,
+			'gelir_vergisi'           => 0,
+			'damga_vergisi'           => 0,
 			'net'                     => 0,
+			'gv_istisnasi'            => 0,
+			'damga_istisnasi'         => 0,
 			'toplam_net_ele_gecen'    => 0,
 			'sgk_isveren'             => 0,
 			'issizlik_isveren'        => 0,
 			'toplam_isveren_maliyeti' => 0,
-			'gv_istisnasi'            => 0,
-			'damga_istisnasi'         => 0,
 		);
 
 		foreach ( $aylar as $ay_no => $ay_adi ) {
@@ -425,15 +422,15 @@ class TIKH_Bordro_Engine {
 			'brut'                    => 0,
 			'sgk_isci'                => 0,
 			'issizlik_isci'           => 0,
-			'net_gelir_vergisi'       => 0,
-			'net_damga_vergisi'       => 0,
+			'gelir_vergisi'           => 0,
+			'damga_vergisi'           => 0,
 			'net'                     => 0,
+			'gv_istisnasi'            => 0,
+			'damga_istisnasi'         => 0,
 			'toplam_net_ele_gecen'    => 0,
 			'sgk_isveren'             => 0,
 			'issizlik_isveren'        => 0,
 			'toplam_isveren_maliyeti' => 0,
-			'gv_istisnasi'            => 0,
-			'damga_istisnasi'         => 0,
 		);
 
 		foreach ( $aylar as $ay_no => $ay_adi ) {

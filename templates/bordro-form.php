@@ -130,8 +130,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 									<td><?php echo esc_html( tikh_format_currency( $ay['brut'] ) ); ?></td>
 									<td><?php echo esc_html( tikh_format_currency( $ay['sgk_isci'] ) ); ?></td>
 									<td><?php echo esc_html( tikh_format_currency( $ay['issizlik_isci'] ) ); ?></td>
-									<td><?php echo esc_html( tikh_format_currency( $ay['net_gelir_vergisi'] ) ); ?></td>
-									<td><?php echo esc_html( tikh_format_currency( $ay['net_damga_vergisi'] ) ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['gelir_vergisi'] ) ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['damga_vergisi'] ) ); ?></td>
 									<td><?php echo esc_html( tikh_format_currency( $ay['kumulatif_gv_matrahi'] ) ); ?></td>
 									<td><?php echo esc_html( tikh_format_currency( $ay['net'] ) ); ?></td>
 									<td><?php echo esc_html( tikh_format_currency( $ay['gv_istisnasi'] ) ); ?></td>
@@ -147,8 +147,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['brut'] ) ); ?></td>
 								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['sgk_isci'] ) ); ?></td>
 								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['issizlik_isci'] ) ); ?></td>
-								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['net_gelir_vergisi'] ) ); ?></td>
-								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['net_damga_vergisi'] ) ); ?></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['gelir_vergisi'] ) ); ?></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['damga_vergisi'] ) ); ?></td>
 								<td>-</td>
 								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['net'] ) ); ?></td>
 								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['gv_istisnasi'] ) ); ?></td>
@@ -194,8 +194,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 									<td><?php echo esc_html( tikh_format_currency( $ay['net'] ) ); ?></td>
 									<td><?php echo esc_html( tikh_format_currency( $ay['sgk_isci'] ) ); ?></td>
 									<td><?php echo esc_html( tikh_format_currency( $ay['issizlik_isci'] ) ); ?></td>
-									<td><?php echo esc_html( tikh_format_currency( $ay['net_gelir_vergisi'] ) ); ?></td>
-									<td><?php echo esc_html( tikh_format_currency( $ay['net_damga_vergisi'] ) ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['gelir_vergisi'] ) ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['damga_vergisi'] ) ); ?></td>
 									<td><?php echo esc_html( tikh_format_currency( $ay['kumulatif_gv_matrahi'] ) ); ?></td>
 									<td><strong><?php echo esc_html( tikh_format_currency( $ay['brut'] ) ); ?></strong></td>
 									<td><?php echo esc_html( tikh_format_currency( $ay['gv_istisnasi'] ) ); ?></td>
@@ -211,8 +211,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['net'] ) ); ?></td>
 								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['sgk_isci'] ) ); ?></td>
 								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['issizlik_isci'] ) ); ?></td>
-								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['net_gelir_vergisi'] ) ); ?></td>
-								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['net_damga_vergisi'] ) ); ?></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['gelir_vergisi'] ) ); ?></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['damga_vergisi'] ) ); ?></td>
 								<td>-</td>
 								<td><strong><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['brut'] ) ); ?></strong></td>
 								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['gv_istisnasi'] ) ); ?></td>
