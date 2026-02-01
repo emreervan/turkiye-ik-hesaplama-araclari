@@ -153,15 +153,6 @@ class TIKH_Bordro_Params {
 class TIKH_Bordro_Engine {
 
 	/**
-	 * Whether the employee is retired.
-	 *
-	 * @since  1.0.0
-	 * @access private
-	 * @var    bool
-	 */
-	private $emekli_mi;
-
-	/**
 	 * Treasury support rate (hazine desteği).
 	 *
 	 * @since  1.0.0
@@ -193,13 +184,12 @@ class TIKH_Bordro_Engine {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param bool   $emekli_mi      Whether employee is retired.
+	 * @param bool   $emekli_mi      Deprecated - no longer used.
 	 * @param float  $hazine_destegi Treasury support rate (0, 0.02, or 0.05).
 	 * @param string $hesap_turu     Calculation type ('brut_net' or 'net_brut').
 	 */
 	public function __construct( $emekli_mi = false, $hazine_destegi = 0.05, $hesap_turu = 'brut_net' ) {
-		$this->emekli_mi      = $emekli_mi;
-		$this->hazine_destegi = $emekli_mi ? 0 : $hazine_destegi;
+		$this->hazine_destegi = $hazine_destegi;
 		$this->hesap_turu     = $hesap_turu;
 	}
 
@@ -278,7 +268,7 @@ class TIKH_Bordro_Engine {
 		// SGK calculations.
 		$sgk_matrahi   = min( $brut, TIKH_Bordro_Params::SGK_TAVAN );
 		$sgk_isci      = round( $sgk_matrahi * TIKH_Bordro_Params::SGK_ISCI_ORANI, 2 );
-		$issizlik_isci = $this->emekli_mi ? 0 : round( $sgk_matrahi * TIKH_Bordro_Params::ISSIZLIK_ISCI_ORANI, 2 );
+		$issizlik_isci = round( $sgk_matrahi * TIKH_Bordro_Params::ISSIZLIK_ISCI_ORANI, 2 );
 
 		// Income tax calculations.
 		$aylik_gv_matrahi = $brut - $sgk_isci - $issizlik_isci;
@@ -303,16 +293,14 @@ class TIKH_Bordro_Engine {
 		// Net salary.
 		$net = round( $brut - $sgk_isci - $issizlik_isci - $net_gelir_vergisi - $net_damga_vergisi, 2 );
 
+		// Toplam Net Ele Geçen = Net + GV İstisnası + DV İstisnası
+		$toplam_net_ele_gecen = round( $net + $gv_istisnasi + $damga_istisnasi, 2 );
+
 		// Employer costs.
-		if ( $this->emekli_mi ) {
-			$sgk_isveren      = round( $sgk_matrahi * TIKH_Bordro_Params::SGDP_ISVEREN_ORANI, 2 );
-			$issizlik_isveren = 0;
-		} else {
-			// SGK işveren oranı: %21,75
-			$sgk_isveren_orani = TIKH_Bordro_Params::SGK_ISVEREN_ORANI - $this->hazine_destegi;
-			$sgk_isveren       = round( $sgk_matrahi * $sgk_isveren_orani, 2 );
-			$issizlik_isveren  = round( $sgk_matrahi * TIKH_Bordro_Params::ISSIZLIK_ISVEREN_ORANI, 2 );
-		}
+		// SGK işveren oranı: %21,75
+		$sgk_isveren_orani = TIKH_Bordro_Params::SGK_ISVEREN_ORANI - $this->hazine_destegi;
+		$sgk_isveren       = round( $sgk_matrahi * $sgk_isveren_orani, 2 );
+		$issizlik_isveren  = round( $sgk_matrahi * TIKH_Bordro_Params::ISSIZLIK_ISVEREN_ORANI, 2 );
 
 		$toplam_isveren_maliyeti = round( $brut + $sgk_isveren + $issizlik_isveren, 2 );
 
@@ -329,6 +317,7 @@ class TIKH_Bordro_Engine {
 			'damga_istisnasi'         => $damga_istisnasi,
 			'net_damga_vergisi'       => $net_damga_vergisi,
 			'net'                     => $net,
+			'toplam_net_ele_gecen'    => $toplam_net_ele_gecen,
 			'sgk_isveren'             => $sgk_isveren,
 			'issizlik_isveren'        => $issizlik_isveren,
 			'toplam_isveren_maliyeti' => $toplam_isveren_maliyeti,
@@ -391,6 +380,7 @@ class TIKH_Bordro_Engine {
 			'net_gelir_vergisi'       => 0,
 			'net_damga_vergisi'       => 0,
 			'net'                     => 0,
+			'toplam_net_ele_gecen'    => 0,
 			'sgk_isveren'             => 0,
 			'issizlik_isveren'        => 0,
 			'toplam_isveren_maliyeti' => 0,
@@ -438,6 +428,7 @@ class TIKH_Bordro_Engine {
 			'net_gelir_vergisi'       => 0,
 			'net_damga_vergisi'       => 0,
 			'net'                     => 0,
+			'toplam_net_ele_gecen'    => 0,
 			'sgk_isveren'             => 0,
 			'issizlik_isveren'        => 0,
 			'toplam_isveren_maliyeti' => 0,
@@ -506,7 +497,6 @@ class TIKH_Bordro {
 			if ( wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['tikh_bordro_nonce'] ) ), 'tikh_bordro_action' ) ) {
 				$hesap_turu     = isset( $_POST['hesap_turu'] ) ? sanitize_text_field( wp_unslash( $_POST['hesap_turu'] ) ) : 'brut_net';
 				$girilen_deger  = isset( $_POST['maas_tutari'] ) ? tikh_sanitize_currency( wp_unslash( $_POST['maas_tutari'] ) ) : 0;
-				$emekli_mi      = isset( $_POST['emekli_calisan'] ) && '1' === $_POST['emekli_calisan'];
 				$hazine_destegi = isset( $_POST['hazine_destegi'] ) ? floatval( $_POST['hazine_destegi'] ) : 0.05;
 
 				if ( $girilen_deger <= 0 ) {
@@ -525,7 +515,6 @@ class TIKH_Bordro {
 					}
 
 					$sonuclar['girilen']        = $girilen_deger;
-					$sonuclar['emekli']         = $emekli_mi;
 					$sonuclar['hazine_destegi'] = $hazine_destegi;
 					$hesap_yapildi              = true;
 				}

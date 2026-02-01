@@ -50,19 +50,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<div class="tikh2026-group">
 				<label for="tikh2026_bordro_hazine"><?php esc_html_e( 'Hazine Desteği', 'turkiye-ik-hesaplama' ); ?></label>
-				<select name="hazine_destegi" id="tikh2026_bordro_hazine" <?php disabled( $emekli_mi ); ?>>
+				<select name="hazine_destegi" id="tikh2026_bordro_hazine">
 					<option value="0.05" <?php selected( $hazine_destegi, 0.05 ); ?>><?php esc_html_e( '%5 İndirim', 'turkiye-ik-hesaplama' ); ?></option>
 					<option value="0.02" <?php selected( $hazine_destegi, 0.02 ); ?>><?php esc_html_e( '%2 İndirim', 'turkiye-ik-hesaplama' ); ?></option>
 					<option value="0" <?php selected( $hazine_destegi, 0 ); ?>><?php esc_html_e( 'Yok', 'turkiye-ik-hesaplama' ); ?></option>
 				</select>
-			</div>
-
-			<div class="tikh2026-group">
-				<label class="tikh2026-check">
-					<input type="checkbox" name="emekli_calisan" value="1" id="tikh2026_bordro_emekli" <?php checked( $emekli_mi ); ?>>
-					<span><?php esc_html_e( 'Emekli Çalışan', 'turkiye-ik-hesaplama' ); ?></span>
-				</label>
-				<div class="tikh2026-checkdesc"><?php esc_html_e( 'SGDP %24.75, işsizlik yok', 'turkiye-ik-hesaplama' ); ?></div>
 			</div>
 		</div>
 
@@ -70,6 +62,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</form>
 
 	<?php if ( $hesap_yapildi && $sonuclar ) : ?>
+		<?php
+		// Determine if it's brut_net or net_brut
+		$is_brut_net = ( 'Brütten Nete' === $sonuclar['hesap_turu'] || 'brut_net' === $hesap_turu );
+		?>
+
 		<!-- Summary Cards -->
 		<div class="tikh2026-cards">
 			<div class="tikh2026-card tikh2026-card-green">
@@ -77,8 +74,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<div class="tikh2026-cval"><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['brut'], 0 ) ); ?><span class="tikh2026-cunit"> TL</span></div>
 			</div>
 			<div class="tikh2026-card tikh2026-card-blue">
-				<div class="tikh2026-ctitle"><?php esc_html_e( 'Yıllık Net', 'turkiye-ik-hesaplama' ); ?></div>
-				<div class="tikh2026-cval"><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['net'], 0 ) ); ?><span class="tikh2026-cunit"> TL</span></div>
+				<div class="tikh2026-ctitle"><?php esc_html_e( 'Yıllık Toplam Net', 'turkiye-ik-hesaplama' ); ?></div>
+				<div class="tikh2026-cval"><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['toplam_net_ele_gecen'], 0 ) ); ?><span class="tikh2026-cunit"> TL</span></div>
 			</div>
 			<div class="tikh2026-card tikh2026-card-orange">
 				<div class="tikh2026-ctitle"><?php esc_html_e( 'Toplam Kesinti', 'turkiye-ik-hesaplama' ); ?></div>
@@ -94,150 +91,141 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="tikh2026-info">
 			<h4><?php esc_html_e( 'Detaylar', 'turkiye-ik-hesaplama' ); ?></h4>
 			<ul>
-				<li><strong><?php esc_html_e( 'Tür:', 'turkiye-ik-hesaplama' ); ?></strong> <?php echo esc_html( $sonuclar['hesap_turu'] ); ?></li>
-				<li><strong><?php esc_html_e( 'Girilen:', 'turkiye-ik-hesaplama' ); ?></strong> <?php echo esc_html( tikh_format_currency( $sonuclar['girilen'] ) ); ?> TL</li>
-				<li><strong><?php esc_html_e( 'Çalışan:', 'turkiye-ik-hesaplama' ); ?></strong> <?php echo $sonuclar['emekli'] ? esc_html__( 'Emekli', 'turkiye-ik-hesaplama' ) : esc_html__( 'Normal', 'turkiye-ik-hesaplama' ); ?></li>
+				<li><strong><?php esc_html_e( 'Hesaplama Türü:', 'turkiye-ik-hesaplama' ); ?></strong> <?php echo esc_html( $sonuclar['hesap_turu'] ); ?></li>
+				<li><strong><?php esc_html_e( 'Girilen Değer:', 'turkiye-ik-hesaplama' ); ?></strong> <?php echo esc_html( tikh_format_currency( $sonuclar['girilen'] ) ); ?> TL</li>
+				<?php if ( $sonuclar['hazine_destegi'] > 0 ) : ?>
+					<li><strong><?php esc_html_e( 'Hazine Desteği:', 'turkiye-ik-hesaplama' ); ?></strong> %<?php echo esc_html( $sonuclar['hazine_destegi'] * 100 ); ?></li>
+				<?php endif; ?>
 			</ul>
 		</div>
 
-		<!-- Employee Payroll Table -->
-		<div class="tikh2026-tblwrap">
-			<div class="tikh2026-tblhead"><?php esc_html_e( 'Çalışan Bordrosu', 'turkiye-ik-hesaplama' ); ?></div>
-			<div class="tikh2026-tblscroll">
-				<table class="tikh2026-tbl">
-					<thead>
-						<tr>
-							<th><?php esc_html_e( 'Ay', 'turkiye-ik-hesaplama' ); ?></th>
-							<th><?php esc_html_e( 'Brüt', 'turkiye-ik-hesaplama' ); ?></th>
-							<th><?php esc_html_e( 'SGK İşçi', 'turkiye-ik-hesaplama' ); ?></th>
-							<th><?php esc_html_e( 'İşsizlik', 'turkiye-ik-hesaplama' ); ?></th>
-							<th><?php esc_html_e( 'GV', 'turkiye-ik-hesaplama' ); ?></th>
-							<th><?php esc_html_e( 'Damga', 'turkiye-ik-hesaplama' ); ?></th>
-							<th><?php esc_html_e( 'Küm.Matrah', 'turkiye-ik-hesaplama' ); ?></th>
-							<th><?php esc_html_e( 'Net', 'turkiye-ik-hesaplama' ); ?></th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php foreach ( $sonuclar['aylik'] as $ay ) : ?>
+		<?php if ( $is_brut_net ) : ?>
+			<!-- BRÜTTEN NETE: Çalışan Bordrosu -->
+			<div class="tikh2026-tblwrap">
+				<div class="tikh2026-tblhead"><?php esc_html_e( 'Çalışan Bordrosu (Brütten Nete)', 'turkiye-ik-hesaplama' ); ?></div>
+				<div class="tikh2026-tblscroll">
+					<table class="tikh2026-tbl">
+						<thead>
 							<tr>
-								<td><?php echo esc_html( $ay['ay'] ); ?></td>
-								<td><?php echo esc_html( tikh_format_currency( $ay['brut'] ) ); ?></td>
-								<td><?php echo esc_html( tikh_format_currency( $ay['sgk_isci'] ) ); ?></td>
-								<td><?php echo esc_html( tikh_format_currency( $ay['issizlik_isci'] ) ); ?></td>
-								<td><?php echo esc_html( tikh_format_currency( $ay['net_gelir_vergisi'] ) ); ?></td>
-								<td><?php echo esc_html( tikh_format_currency( $ay['net_damga_vergisi'] ) ); ?></td>
-								<td><?php echo esc_html( tikh_format_currency( $ay['kumulatif_gv_matrahi'] ) ); ?></td>
-								<td><?php echo esc_html( tikh_format_currency( $ay['net'] ) ); ?></td>
+								<th><?php esc_html_e( 'Ay', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Brüt', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'SGK İşçi', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'İşsizlik İşçi', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Gelir Vergisi', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Damga Vergisi', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Küm. Matrah', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Net', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'GV İstisnası', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'DV İstisnası', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Toplam Net', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'SGK İşveren', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'İşsizlik İşveren', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Toplam Maliyet', 'turkiye-ik-hesaplama' ); ?></th>
 							</tr>
-						<?php endforeach; ?>
-						<tr class="tikh2026-tot">
-							<td><?php esc_html_e( 'TOPLAM', 'turkiye-ik-hesaplama' ); ?></td>
-							<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['brut'] ) ); ?></td>
-							<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['sgk_isci'] ) ); ?></td>
-							<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['issizlik_isci'] ) ); ?></td>
-							<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['net_gelir_vergisi'] ) ); ?></td>
-							<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['net_damga_vergisi'] ) ); ?></td>
-							<td>-</td>
-							<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['net'] ) ); ?></td>
-						</tr>
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							<?php foreach ( $sonuclar['aylik'] as $ay ) : ?>
+								<tr>
+									<td><?php echo esc_html( $ay['ay'] ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['brut'] ) ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['sgk_isci'] ) ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['issizlik_isci'] ) ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['net_gelir_vergisi'] ) ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['net_damga_vergisi'] ) ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['kumulatif_gv_matrahi'] ) ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['net'] ) ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['gv_istisnasi'] ) ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['damga_istisnasi'] ) ); ?></td>
+									<td><strong><?php echo esc_html( tikh_format_currency( $ay['toplam_net_ele_gecen'] ) ); ?></strong></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['sgk_isveren'] ) ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['issizlik_isveren'] ) ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['toplam_isveren_maliyeti'] ) ); ?></td>
+								</tr>
+							<?php endforeach; ?>
+							<tr class="tikh2026-tot">
+								<td><?php esc_html_e( 'TOPLAM', 'turkiye-ik-hesaplama' ); ?></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['brut'] ) ); ?></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['sgk_isci'] ) ); ?></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['issizlik_isci'] ) ); ?></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['net_gelir_vergisi'] ) ); ?></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['net_damga_vergisi'] ) ); ?></td>
+								<td>-</td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['net'] ) ); ?></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['gv_istisnasi'] ) ); ?></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['damga_istisnasi'] ) ); ?></td>
+								<td><strong><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['toplam_net_ele_gecen'] ) ); ?></strong></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['sgk_isveren'] ) ); ?></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['issizlik_isveren'] ) ); ?></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['toplam_isveren_maliyeti'] ) ); ?></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
-		</div>
 
-		<!-- Employer Cost Table -->
-		<div class="tikh2026-tblwrap">
-			<div class="tikh2026-tblhead"><?php esc_html_e( 'İşveren Maliyeti', 'turkiye-ik-hesaplama' ); ?></div>
-			<div class="tikh2026-tblscroll">
-				<table class="tikh2026-tbl">
-					<thead>
-						<tr>
-							<th><?php esc_html_e( 'Ay', 'turkiye-ik-hesaplama' ); ?></th>
-							<th><?php esc_html_e( 'Brüt', 'turkiye-ik-hesaplama' ); ?></th>
-							<th><?php esc_html_e( 'SGK İşveren', 'turkiye-ik-hesaplama' ); ?></th>
-							<th><?php esc_html_e( 'İşsizlik İşveren', 'turkiye-ik-hesaplama' ); ?></th>
-							<th><?php esc_html_e( 'Toplam Maliyet', 'turkiye-ik-hesaplama' ); ?></th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php foreach ( $sonuclar['aylik'] as $ay ) : ?>
+		<?php else : ?>
+			<!-- NETTEN BRÜTE: Çalışan Bordrosu -->
+			<div class="tikh2026-tblwrap">
+				<div class="tikh2026-tblhead"><?php esc_html_e( 'Çalışan Bordrosu (Netten Brüte)', 'turkiye-ik-hesaplama' ); ?></div>
+				<div class="tikh2026-tblscroll">
+					<table class="tikh2026-tbl">
+						<thead>
 							<tr>
-								<td><?php echo esc_html( $ay['ay'] ); ?></td>
-								<td><?php echo esc_html( tikh_format_currency( $ay['brut'] ) ); ?></td>
-								<td><?php echo esc_html( tikh_format_currency( $ay['sgk_isveren'] ) ); ?></td>
-								<td><?php echo esc_html( tikh_format_currency( $ay['issizlik_isveren'] ) ); ?></td>
-								<td><?php echo esc_html( tikh_format_currency( $ay['toplam_isveren_maliyeti'] ) ); ?></td>
+								<th><?php esc_html_e( 'Ay', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Hedef Net', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'SGK İşçi', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'İşsizlik İşçi', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Gelir Vergisi', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Damga Vergisi', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Küm. Matrah', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Brüt', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'GV İstisnası', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'DV İstisnası', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Toplam Net', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'SGK İşveren', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'İşsizlik İşveren', 'turkiye-ik-hesaplama' ); ?></th>
+								<th><?php esc_html_e( 'Toplam Maliyet', 'turkiye-ik-hesaplama' ); ?></th>
 							</tr>
-						<?php endforeach; ?>
-						<tr class="tikh2026-tot">
-							<td><?php esc_html_e( 'TOPLAM', 'turkiye-ik-hesaplama' ); ?></td>
-							<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['brut'] ) ); ?></td>
-							<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['sgk_isveren'] ) ); ?></td>
-							<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['issizlik_isveren'] ) ); ?></td>
-							<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['toplam_isveren_maliyeti'] ) ); ?></td>
-						</tr>
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							<?php foreach ( $sonuclar['aylik'] as $ay ) : ?>
+								<tr>
+									<td><?php echo esc_html( $ay['ay'] ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['net'] ) ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['sgk_isci'] ) ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['issizlik_isci'] ) ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['net_gelir_vergisi'] ) ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['net_damga_vergisi'] ) ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['kumulatif_gv_matrahi'] ) ); ?></td>
+									<td><strong><?php echo esc_html( tikh_format_currency( $ay['brut'] ) ); ?></strong></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['gv_istisnasi'] ) ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['damga_istisnasi'] ) ); ?></td>
+									<td><strong><?php echo esc_html( tikh_format_currency( $ay['toplam_net_ele_gecen'] ) ); ?></strong></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['sgk_isveren'] ) ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['issizlik_isveren'] ) ); ?></td>
+									<td><?php echo esc_html( tikh_format_currency( $ay['toplam_isveren_maliyeti'] ) ); ?></td>
+								</tr>
+							<?php endforeach; ?>
+							<tr class="tikh2026-tot">
+								<td><?php esc_html_e( 'TOPLAM', 'turkiye-ik-hesaplama' ); ?></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['net'] ) ); ?></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['sgk_isci'] ) ); ?></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['issizlik_isci'] ) ); ?></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['net_gelir_vergisi'] ) ); ?></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['net_damga_vergisi'] ) ); ?></td>
+								<td>-</td>
+								<td><strong><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['brut'] ) ); ?></strong></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['gv_istisnasi'] ) ); ?></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['damga_istisnasi'] ) ); ?></td>
+								<td><strong><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['toplam_net_ele_gecen'] ) ); ?></strong></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['sgk_isveren'] ) ); ?></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['issizlik_isveren'] ) ); ?></td>
+								<td><?php echo esc_html( tikh_format_currency( $sonuclar['toplam']['toplam_isveren_maliyeti'] ) ); ?></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
-		</div>
+		<?php endif; ?>
 	<?php endif; ?>
-
-	<!-- Parameters Reference -->
-	<div class="tikh2026-params">
-		<div class="tikh2026-pcard">
-			<h4><?php esc_html_e( 'Asgari Ücret 2026', 'turkiye-ik-hesaplama' ); ?></h4>
-			<div class="tikh2026-pitem">
-				<span class="tikh2026-plbl"><?php esc_html_e( 'Brüt', 'turkiye-ik-hesaplama' ); ?></span>
-				<span class="tikh2026-pval">33.030 TL</span>
-			</div>
-			<div class="tikh2026-pitem">
-				<span class="tikh2026-plbl"><?php esc_html_e( 'GV Matrahı', 'turkiye-ik-hesaplama' ); ?></span>
-				<span class="tikh2026-pval">28.075,50 TL</span>
-			</div>
-		</div>
-
-		<div class="tikh2026-pcard">
-			<h4><?php esc_html_e( 'GV Dilimleri', 'turkiye-ik-hesaplama' ); ?></h4>
-			<div class="tikh2026-pitem">
-				<span class="tikh2026-plbl">0-190K</span>
-				<span class="tikh2026-pval">%15</span>
-			</div>
-			<div class="tikh2026-pitem">
-				<span class="tikh2026-plbl">190K-400K</span>
-				<span class="tikh2026-pval">%20</span>
-			</div>
-			<div class="tikh2026-pitem">
-				<span class="tikh2026-plbl">400K-1.5M</span>
-				<span class="tikh2026-pval">%27</span>
-			</div>
-			<div class="tikh2026-pitem">
-				<span class="tikh2026-plbl">1.5M-5.3M</span>
-				<span class="tikh2026-pval">%35</span>
-			</div>
-			<div class="tikh2026-pitem">
-				<span class="tikh2026-plbl">5.3M+</span>
-				<span class="tikh2026-pval">%40</span>
-			</div>
-		</div>
-
-		<div class="tikh2026-pcard">
-			<h4><?php esc_html_e( 'SGK Oranları', 'turkiye-ik-hesaplama' ); ?></h4>
-			<div class="tikh2026-pitem">
-				<span class="tikh2026-plbl"><?php esc_html_e( 'SGK İşçi', 'turkiye-ik-hesaplama' ); ?></span>
-				<span class="tikh2026-pval">%14</span>
-			</div>
-			<div class="tikh2026-pitem">
-				<span class="tikh2026-plbl"><?php esc_html_e( 'İşsizlik İşçi', 'turkiye-ik-hesaplama' ); ?></span>
-				<span class="tikh2026-pval">%1</span>
-			</div>
-			<div class="tikh2026-pitem">
-				<span class="tikh2026-plbl"><?php esc_html_e( 'SGK İşveren', 'turkiye-ik-hesaplama' ); ?></span>
-				<span class="tikh2026-pval">%21,75</span>
-			</div>
-			<div class="tikh2026-pitem">
-				<span class="tikh2026-plbl"><?php esc_html_e( 'İşsizlik İşveren', 'turkiye-ik-hesaplama' ); ?></span>
-				<span class="tikh2026-pval">%2</span>
-			</div>
-		</div>
-	</div>
 </div>

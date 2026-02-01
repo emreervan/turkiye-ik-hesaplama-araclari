@@ -22,9 +22,8 @@ Türkiye İK Hesaplama Araçları, insan kaynakları departmanları ve çalışa
 * 12 aylık detaylı bordro çıktısı
 * SGK, işsizlik, gelir vergisi ve damga vergisi hesaplaması
 * İşveren maliyeti hesaplama
-* Emekli çalışan desteği (SGDP)
 * Hazine desteği seçenekleri (%5, %2, yok)
-* Asgari ücret istisnası otomatik uygulaması
+* Asgari ücret istisnası ve damga vergisi istisnası otomatik uygulaması
 
 **Zam Hesaplama**
 * Yüzdeden yeni maaş hesaplama
@@ -79,10 +78,6 @@ WordPress 5.8 ve üzeri sürümleri desteklemektedir.
 = Hesaplamalar hangi yıla göre yapılıyor? =
 
 Tüm hesaplamalar 2026 yılı Türkiye mevzuatına göre yapılmaktadır. Gelir vergisi hesaplamasında 2025 ve 2026 yılları seçilebilir.
-
-= Emekli çalışanlar için hesaplama yapılabiliyor mu? =
-
-Evet, bordro hesaplamasında "Emekli Çalışan" seçeneği ile SGDP (%24,75) hesaplaması yapılmaktadır.
 
 = Hazine desteği nedir? =
 

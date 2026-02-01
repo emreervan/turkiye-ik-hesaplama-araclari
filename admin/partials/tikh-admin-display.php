@@ -145,7 +145,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<ul>
 					<li><?php esc_html_e( 'Hesaplamalar 2026 yılı mevzuatına göre yapılmaktadır.', 'turkiye-ik-hesaplama' ); ?></li>
 					<li><?php esc_html_e( 'Asgari ücret istisnası ve damga vergisi istisnası otomatik uygulanmaktadır.', 'turkiye-ik-hesaplama' ); ?></li>
-					<li><?php esc_html_e( 'Emekli çalışanlar için SGDP hesaplaması yapılmaktadır.', 'turkiye-ik-hesaplama' ); ?></li>
 					<li><?php esc_html_e( 'Hazine desteği (%5, %2 veya yok) seçilebilmektedir.', 'turkiye-ik-hesaplama' ); ?></li>
 				</ul>
 			</div>
